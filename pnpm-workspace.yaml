@@ -1,0 +1,6 @@
+# pnpm keeps its settings here (the `pnpm` field in package.json is ignored
+# since pnpm 11). esbuild is the only dependency with a postinstall step: it
+# wires up the platform binary Vite needs, so the install must be allowed to
+# run it.
+allowBuilds:
+  esbuild: true

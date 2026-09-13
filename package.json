@@ -1,0 +1,19 @@
+{
+  "name": "refactoring-ui-zh",
+  "private": true,
+  "description": "《Refactoring UI》中文翻译（非官方）的在线站点",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "image-size": "^2.0.2",
+    "medium-zoom": "^1.1.0",
+    "vitepress": "^1.6.4"
+  }
+}

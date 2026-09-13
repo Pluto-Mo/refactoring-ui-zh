@@ -1,0 +1,79 @@
+/**
+ * Typography for long-form Chinese. VitePress ships a `:lang(zh)` font stack
+ * that leans on `system-ui`; naming the CJK families explicitly gives a
+ * predictable result across Windows, macOS and Linux.
+ */
+:root:where(:lang(zh)) {
+  --vp-font-family-base:
+    'Inter', 'PingFang SC', 'HarmonyOS Sans SC', 'Microsoft YaHei',
+    'Source Han Sans SC', 'Noto Sans CJK SC', ui-sans-serif, system-ui,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+/* Chinese text is denser than Latin: a little more line height and letter
+   spacing buys a lot of reading comfort. Column width stays at the VitePress
+   default of 688px (~43 characters per line). */
+.vp-doc,
+.vp-doc p,
+.vp-doc li,
+.vp-doc td {
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.vp-doc p {
+  margin: 1.1em 0;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  line-height: 1.45;
+}
+
+/* Illustrations are the point of this book: give them room and a quiet frame,
+   and let them overflow the text column once the viewport has space to spare. */
+.vp-doc img {
+  display: block;
+  margin: 1.8em auto;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.05);
+  cursor: zoom-in;
+}
+
+@media (min-width: 1440px) {
+  .vp-doc img {
+    max-width: calc(100% + 6rem);
+    margin-inline: -3rem;
+  }
+}
+
+/* Landing page: the book cover replaces the default gradient blob. */
+.VPHero .image-bg {
+  display: none;
+}
+
+.VPHero .image-container {
+  width: min(260px, 60vw);
+}
+
+.book-cover {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), 0 18px 48px rgba(0, 0, 0, 0.14);
+}
+
+/**
+ * medium-zoom ships its styles from JS and sets no stacking order at all, so
+ * its overlay and the enlarged copy end up at `z-index: auto` — below the
+ * VitePress sidebar (`--vp-z-index-sidebar: 60`), which would then cover the
+ * left part of every enlarged illustration. medium-zoom appends both elements
+ * to <body>, so plain global selectors are enough.
+ */
+.medium-zoom-overlay {
+  z-index: 100;
+}
+
+.medium-zoom-image--opened {
+  z-index: 101;
+}

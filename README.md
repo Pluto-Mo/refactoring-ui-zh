@@ -17,15 +17,40 @@
 ├── 07 图片的运用.md
 ├── 08 收尾打磨.md
 ├── 09 持续进阶.md
+├── index.md           网站首页
 ├── assets/            原书插图（284 张）
 ├── tools/             PDF → Markdown → 中文译文 的完整工具链
 ├── docs/
 │   └── 翻译规范与术语表.md
+├── .vitepress/        VitePress 站点配置与主题
+├── .github/workflows/ GitHub Pages 自动部署
+├── package.json       站点构建依赖（包管理器为 pnpm）
+├── pnpm-lock.yaml     锁文件
+├── pnpm-workspace.yaml pnpm 设置（允许 esbuild 的 postinstall）
 ├── LICENSE            MIT，仅覆盖原创代码（tools/、docs/、README）
 └── NOTICE.md          译文与插图的版权归属
 ```
 
 每章一个文件，正文中的图片用相对路径 `assets/xxx.png` 引用，直接在仓库里预览即可正常显示。
+
+## 在线阅读（网站）
+
+仓库根目录同时是一个 VitePress 站点：章节文件、图片和工具链都留在原处，网站只是多了一层渲染，不产生第二份译文。
+
+```bash
+pnpm install
+pnpm dev      # http://localhost:5173/refactoring-ui-zh/
+pnpm build    # 产物在 .vitepress/dist
+pnpm preview  # 用本地服务器预览构建产物
+```
+
+包管理器是 pnpm（版本写在 `package.json` 的 `packageManager` 字段里，用 Corepack 可直接 `corepack enable`）。
+
+- 线上地址是 `https://<用户名>.github.io/refactoring-ui-zh/`，所以站点默认带 `base: /refactoring-ui-zh/`，本地开发也走同一个前缀，免得出现「本地能跑、线上 404」。换成自定义域名时用 `DOCS_BASE=/` 构建。
+- 章节的标题和顺序直接来自文件名，和 `tools/chapters.py` 是同一份事实；只有章节 URL 的英文段写在 `.vitepress/config.mts` 的 `CHAPTER_SLUGS` 里。
+- 章节正文不含 H1（见 `tools/cleanup_chapters.py`），站点渲染时按文件名补回标题，Markdown 文件保持工具链产出的原样。
+- 推送到 `main` 由 `.github/workflows/deploy-pages.yml` 自动构建发布；首次需要在仓库 Settings → Pages 里把 Source 设为 GitHub Actions。
+- `tools/`、`docs/` 和 `README.md` 不发布到站点（见 `srcExclude`），它们只服务翻译流程。
 
 ## 翻译说明
 

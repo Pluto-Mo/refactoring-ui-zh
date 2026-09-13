@@ -4,3 +4,8 @@ desktop.ini
 *.tmp
 __pycache__/
 *.pyc
+
+# VitePress site
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
