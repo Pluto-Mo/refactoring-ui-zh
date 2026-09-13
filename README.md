@@ -46,7 +46,7 @@ pnpm preview  # 用本地服务器预览构建产物
 
 包管理器是 pnpm（版本写在 `package.json` 的 `packageManager` 字段里，用 Corepack 可直接 `corepack enable`）。
 
-- 线上地址是 `https://<用户名>.github.io/refactoring-ui-zh/`，所以站点默认带 `base: /refactoring-ui-zh/`，本地开发也走同一个前缀，免得出现「本地能跑、线上 404」。换成自定义域名时用 `DOCS_BASE=/` 构建。
+- 线上地址是 <https://github.mytemos.com/refactoring-ui-zh/>（账号级自定义域名；没有自定义域名时是 `https://<用户名>.github.io/refactoring-ui-zh/`），所以站点默认带 `base: /refactoring-ui-zh/`，本地开发也走同一个前缀，免得出现「本地能跑、线上 404」。站点挂在域名根目录时用 `DOCS_BASE=/` 构建。
 - 章节的标题和顺序直接来自文件名，和 `tools/chapters.py` 是同一份事实；只有章节 URL 的英文段写在 `.vitepress/config.mts` 的 `CHAPTER_SLUGS` 里。
 - 章节正文不含 H1（见 `tools/cleanup_chapters.py`），站点渲染时按文件名补回标题，Markdown 文件保持工具链产出的原样。
 - 推送到 `main` 由 `.github/workflows/deploy-pages.yml` 自动构建发布；首次需要在仓库 Settings → Pages 里把 Source 设为 GitHub Actions。

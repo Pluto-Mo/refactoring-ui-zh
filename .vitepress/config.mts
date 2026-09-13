@@ -47,9 +47,10 @@ if (chapters.length === 0) {
 
 const REPO = 'https://github.com/TCOTC/refactoring-ui-zh'
 
-// Published at https://<user>.github.io/refactoring-ui-zh/. Local dev uses the
-// same base on purpose: a link that works locally then works deployed too.
-// Set DOCS_BASE=/ when serving from a domain root.
+// Published at https://github.mytemos.com/refactoring-ui-zh/ (a project site
+// keeps its path under an account-level custom domain). Local dev uses the same
+// base on purpose: a link that works locally then works deployed too.
+// Set DOCS_BASE=/ when the site is served from a domain root.
 const base = (process.env.DOCS_BASE ?? '/refactoring-ui-zh/').replace(/\/?$/, '/')
 
 /**
