@@ -7,15 +7,15 @@ hero:
   tagline: 写给会写代码、但没学过设计的开发者 —— 9 章、284 张插图
   actions:
     - theme: brand
-      text: 从第一章开始
-      link: /starting-from-scratch/
+      text: 整本连续阅读
+      link: /book/
     - theme: alt
-      text: 版权与授权
-      link: /notice/
+      text: 按章阅读
+      link: /starting-from-scratch/
 
 features:
-  - title: 按章阅读
-    details: 全书拆成 9 章，左侧章节导航、右侧本页目录，前后章可以直接翻页。
+  - title: 连续阅读
+    details: 9 个 Markdown 章节合成一个长页面，可以像看电子书一样从头一路往下读；原来的分章阅读也保留。
   - title: 中文全文搜索
     details: 内置中文分词检索，可以直接搜「层级」「留白」「色阶」这类术语。
   - title: 点图放大

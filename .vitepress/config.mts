@@ -45,7 +45,7 @@ if (chapters.length === 0) {
   throw new Error(`no chapter file matching "NN 标题.md" was found in ${rootDir}`)
 }
 
-const REPO = 'https://github.com/TCOTC/refactoring-ui-zh'
+const REPO = 'https://github.com/Pluto-Mo/refactoring-ui-zh'
 
 // Published at https://github.mytemos.com/refactoring-ui-zh/ (a project site
 // keeps its path under an account-level custom domain). Local dev uses the same
@@ -106,6 +106,7 @@ export default defineConfig({
 
   rewrites: Object.fromEntries([
     ...chapters.map((chapter) => [chapter.name, chapter.out]),
+    ['book.md', 'book/index.md'],
     ['NOTICE.md', 'notice/index.md'],
   ]),
 
@@ -136,7 +137,8 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: '开始阅读', link: chapters[0].url },
+      { text: '整本阅读', link: '/book/' },
+      { text: '分章阅读', link: chapters[0].url },
       { text: '版权与授权', link: '/notice/' },
       { text: 'GitHub', link: REPO },
     ],
